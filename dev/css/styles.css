@@ -1,0 +1,8 @@
+
+/* Bottom Navigation Styles */
+.bottomNav .ui-btn .ui-icon { width: 30px !important; height: 30px !important; margin-left: -15px !important; box-shadow: none !important; -moz-box-shadow: none !important; -webkit-box-shadow: none !important; -webkit-border-radius: 0 !important; border-radius: 0 !important; }
+.bottomNav #explore .ui-icon { background:  url(../img/icons/explore.png) 50% 50% no-repeat; background-size: 24px 16px; }
+.bottomNav #add .ui-icon { background:  url(../img/icons/add.png) 50% 50% no-repeat; background-size: 22px 25px;  }
+.bottomNav #profile .ui-icon { background:  url(../img/icons/profile.png) 50% 50% no-repeat;  background-size: 24px 21px; }
+.bottomNav #stream .ui-icon { background:  url(../img/icons/stream.png) 50% 50% no-repeat;  background-size: 24px 24px; }
+.bottomNav #activity .ui-icon { background:  url(../img/icons/activity.png) 50% 50% no-repeat;  background-size: 24px 24px; }

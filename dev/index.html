@@ -1,0 +1,213 @@
+<!doctype html>
+<html class="no-js ui-mobile-rendering" lang="en">
+<head>
+	<title>Backbone.js, Require.js, and jQuery Mobile</title>
+	<meta name="description" content="">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- Load App CSS -->
+	<link rel="stylesheet" href="css/jquery.mobile-1.2.0.min.css" />
+	<link rel="stylesheet" href="css/styles.css" />
+	
+	<!-- Load App JS Through Require.js -->
+	<script src="js/libs/require.js" data-main="js/mobile"></script>
+	
+</head>
+<body>
+
+<!-- Sign in -->
+<div id="signIn" data-role="page" data-title="Entry">
+
+	<div data-role="header" data-id="topNav">
+		<h1>Essential.fm</h1>
+		<div data-role="navbar" class="topNav">
+			<ul>
+				<li><a href="#signIn" id="signInTab" class="ui-btn-active ui-state-persist">Sign in</a></li>
+				<li><a href="#signUp">Sign up</a></li>
+			</ul>
+		</div><!-- /navbar -->
+	</div><!-- /header -->
+
+	<div data-role="content">
+	
+		<div data-role="fieldcontain" class="ui-hide-label">
+			<label for="email">Email:</label>
+			<input type="email" name="email" id="email" value="" placeholder="Email" data-clear-btn="true" />
+		</div>
+		<div data-role="fieldcontain" class="ui-hide-label">
+			<label for="password">Password:</label>
+			<input type="password" name="password" id="password" value="" placeholder="Password" data-clear-btn="true" />
+		</div>
+		<div class="ui-grid-solo">
+			<div class="ui-block-a"><button id="signInButton" class="" type="v" data-theme="b">Sign in!</button></div>
+		</div>
+		<div class="ui-grid-a">
+			<div class="ui-block-a"><button type="button">Forgot Email?</button></div>
+			<div class="ui-block-b"><button type="button">Forgot Password?</button></div>	   
+		</div>
+	
+	</div><!-- /content -->
+
+</div>
+
+<!-- Sign up -->
+<div id="signUp" data-role="page" data-title="signUp">
+
+	<div data-role="header" data-id="topNav">
+		<h1>Essential.fm</h1>
+		<div data-role="navbar" class="topNav">
+			<ul>
+				<li><a href="#signIn">Sign in</a></li>
+				<li><a href="#signUp" class="ui-btn-active ui-state-persist">Sign up</a></li>
+			</ul>
+		</div><!-- /navbar -->
+	</div><!-- /header -->
+
+	<div data-role="content">
+
+		<a href="#" data-role="button">Facebook</a>
+		<a href="#" data-role="button">Twitter</a>
+	
+	</div><!-- /content -->
+
+</div>
+
+<!-- Stream -->
+<div id="stream" data-role="page" data-title="Stream">
+  
+	<div data-role="header">
+	      <h1>Stream</h1>
+	</div><!-- /header -->
+
+	<div data-role="content">
+	      <h2>Select a Category Below:</h2>
+	</div><!-- /content -->
+
+	<div data-role="footer" data-id="bottomNav" data-position="fixed">
+		<div data-role="navbar" class="bottomNav">
+			<ul>
+				<li><a href="#stream" id="stream" data-icon="custom" class="ui-btn-active ui-state-persist"></a></li>
+				<li><a href="#explore" id="explore" data-icon="custom"></a></li>
+				<li><a href="#add" id="add" data-icon="custom"></a></li>
+				<li><a href="#activity" id="activity" data-icon="custom"></a></li>
+				<li><a href="#profile" id="profileNav" data-icon="custom"></a></li>
+			</ul>
+		</div><!-- /navbar -->
+	</div><!-- /footer -->
+</div>
+
+<!-- Explore -->
+<div id="explore" data-role="page" data-title="Explore">
+  
+	<div data-role="header">
+	      <h1>Explore</h1>
+	</div><!-- /header -->
+
+	<div data-role="content">
+	      <h2>Select a Category Below:</h2>
+	</div><!-- /content -->
+
+	<div data-role="footer" data-id="bottomNav" data-position="fixed">
+		<div data-role="navbar" class="bottomNav">
+			<ul>
+				<li><a href="#stream" id="stream" data-icon="custom"></a></li>
+				<li><a href="#explore" id="explore" data-icon="custom" class="ui-btn-active ui-state-persist"></a></li>
+				<li><a href="#add" id="add" data-icon="custom"></a></li>
+				<li><a href="#activity" id="activity" data-icon="custom"></a></li>
+				<li><a href="#profile" id="profileNav" data-icon="custom"></a></li>
+			</ul>
+		</div><!-- /navbar -->
+	</div><!-- /footer -->
+</div>
+
+<!-- Add -->
+<div id="add" data-role="page" data-title="Add">
+  
+	<div data-role="header">
+	      <h1>Add</h1>
+	</div><!-- /header -->
+
+	<div data-role="content">
+	      <h2>Select a Category Below:</h2>
+	</div><!-- /content -->
+
+	<div data-role="footer" data-id="bottomNav" data-position="fixed">
+		<div data-role="navbar" class="bottomNav">
+			<ul>
+				<li><a href="#stream" id="stream" data-icon="custom"></a></li>
+				<li><a href="#explore" id="explore" data-icon="custom"></a></li>
+				<li><a href="#add" id="add" data-icon="custom" class="ui-btn-active ui-state-persist"></a></li>
+				<li><a href="#activity" id="activity" data-icon="custom"></a></li>
+				<li><a href="#profile" id="profileNav" data-icon="custom"></a></li>
+			</ul>
+		</div><!-- /navbar -->
+	</div><!-- /footer -->
+</div>
+
+<!-- Activity -->
+<div id="activity" data-role="page" data-title="Activity">
+  
+	<div data-role="header">
+	      <h1>Activity</h1>
+	</div><!-- /header -->
+
+	<div data-role="content">
+	      <h2>Select a Category Below:</h2>
+	</div><!-- /content -->
+
+	<div data-role="footer" data-id="bottomNav" data-position="fixed">
+		<div data-role="navbar" class="bottomNav">
+			<ul>
+				<li><a href="#stream" id="stream" data-icon="custom"></a></li>
+				<li><a href="#explore" id="explore" data-icon="custom"></a></li>
+				<li><a href="#add" id="add" data-icon="custom"></a></li>
+				<li><a href="#activity" id="activity" data-icon="custom" class="ui-btn-active ui-state-persist"></a></li>
+				<li><a href="#profile" id="profileNav" data-icon="custom"></a></li>
+			</ul>
+		</div><!-- /navbar -->
+	</div><!-- /footer -->
+</div>
+
+<!-- Profile -->
+<div id="profileView" data-role="page" data-title="Profile">
+  
+	<div data-role="header">
+	      <h1>Profile</h1>
+	</div><!-- /header -->
+
+	<div data-role="content">
+		<h2>Select a Category Below:</h2>
+		<div class="ui-grid-solo">
+			<div class="ui-block-a"><button id="signOutButton" class="signOutButton" type="v" data-theme="b">Sign out!</button></div>
+		</div>
+	</div><!-- /content -->
+
+	<div data-role="footer" data-id="bottomNav" data-position="fixed">
+		<div data-role="navbar" class="bottomNav">
+			<ul>
+				<li><a href="#stream" id="stream" data-icon="custom"></a></li>
+				<li><a href="#explore" id="explore" data-icon="custom"></a></li>
+				<li><a href="#add" id="add" data-icon="custom"></a></li>
+				<li><a href="#activity" id="activity" data-icon="custom"></a></li>
+				<li><a href="#profile" id="profileNav" data-icon="custom" class="ui-btn-active ui-state-persist"></a></li>
+			</ul>
+		</div><!-- /navbar -->
+	</div><!-- /footer -->
+</div>
+
+<!-- Underscore Template that is used to display all of the Category Models -->
+<script id="categoryItems" type="text/template">
+
+      <% _.each( collection.toJSON(), function( category, id ) { %>
+
+            <li class="ui-li ui-li-static ui-btn-up-c ui-corner-top">
+                  <%= category.type %>
+            </li>
+
+      <% }); %>
+
+</script>
+
+</body>
+</html>
