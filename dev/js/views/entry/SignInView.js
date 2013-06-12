@@ -2,43 +2,40 @@
 // =============
 
 // Includes file dependencies
-define([ "firebase", "jquery", "backbone", "auth", "models/CategoryModel" ], 
-function( Firebase, $, Backbone, Auth, CategoryModel ) {
+define([ "firebase", "jquery", "backbone", "auth", "debug" ], 
+function( Firebase, $, Backbone, Auth, Debug ) {
 
     // Extends Backbone.View
     var entrySignInView = Backbone.View.extend({
 
-		el: $("#signIn"),
+		el: $("#signInView"),
 
 		events: {
 	    	"click #signInButton": "signIn"
 	  	},
 
         initialize: function() {
-			console.log('View - Init SignIn View!!!!');
+			Debug.log('View - SignIn View - Init!!!!');
 			this.render();
         },
 
         render: function() {
-			console.log('View - Render SignIn View!!!!');
-			$.mobile.changePage( "#signIn" , { reverse: false, changeHash: false } );
-			$("#signIn #signInTab").addClass("ui-btn-active");
+			Debug.log('View - SignIn View - Render!!!!');
+			$.mobile.changePage( "#signInView" , { reverse: false, changeHash: false } );
+			$("#signInView #signInNav").addClass("ui-btn-active");
         },
 
 		signIn: function() {
-	
-			console.log('Login!');
+			var email = $('#signInView #emailInput').val();
+			var password = $('#signInView #passwordInput').val();
 			
-			var email = $('#signIn #email').val();
-			var password = $('#signIn #password').val();
-			
-			console.log('Attemping to login ' + email + ' with ' + password);
+			Debug.log('View - SignIn View - Attemping to login ' + email + ' with ' + password);
 			
 			Auth.client.login('password', {
 				email: email,
 				password: password
 			});
-			
+			$('#signInView #passwordInput').val('');
 		}
 		
 	});

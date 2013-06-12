@@ -1,23 +1,25 @@
-// Sets the require.js configuration for your application.
+// App Entry
 
 require.config( {
 
-      // 3rd party script alias names (Easier to type "jquery" than "libs/jquery-1.8.2.min")
       paths: {
 
             // Core Libraries
 			"firebase": "https://cdn.firebase.com/v0/firebase",
-            "jquery": "libs/jquery",
-            "jquerymobile": "libs/jquerymobile",
-            "underscore": "libs/lodash",
-            "backbone": "libs/backbone",
-			"backbonefirebase": "libs/backbone-firebase",
+            "jquery": "libs/jquery", // 2.0
+            "jquerymobile": "libs/jquerymobile", // 1.3.1
+            "underscore": "libs/lodash", // 1.2.1
+            //"underscore": "libs/underscore", // 1.4.4
+            "backbone": "libs/backbone", // 1.0.0
+            //"backbone": "http://cdnjs.cloudflare.com/ajax/libs/backbone.js/0.9.10/backbone-min",
+			"backbonefirebase": "libs/backbone-firebase", // June 8th, 2013
 			"firebaseauthclient": "https://cdn.firebase.com/v0/firebase-auth-client",
-			"auth": "auth"
+			"auth": "framework/auth",
+			"debug": "framework/debug"
 
       },
 
-      // Sets the configuration for your third party scripts that are not AMD compatible
+      // Sets the configuration for third party scripts that are not AMD compatible
       shim: {
 
 			"firebase": {
@@ -39,6 +41,10 @@ require.config( {
 				"deps": [ "firebase", "firebaseauthclient" ],
 				"exports": "Auth"  //attaches "Auth" to the window object
 			},
+			"debug": {
+				"deps": [ "firebase", "firebaseauthclient" ],
+				"exports": "Debug"
+			}
 
       } // end Shim Configuration
 
@@ -52,6 +58,7 @@ require([
 	"backbonefirebase", 
 	"firebaseauthclient", 
 	"auth", 
+	"debug",
 	"routers/router" 
 ], function( 
 	Firebase, 
@@ -60,6 +67,7 @@ require([
 	BackboneFirebase, 
 	FirebaseAuthClient, 
 	Auth, 
+	Debug,
 	Router 
 ) {
 
@@ -73,13 +81,12 @@ require([
 			$.mobile.hashListeningEnabled = false;
 			
 			// Turn page transitions off
-			$.mobile.defaultPageTransition = "none";
+			$.mobile.defaultPageTransition = "fade";
 			
 		}
 	)
-
+	
 	require( [ "jquerymobile" ], function() {
-		// Instantiates a new Backbone.js Mobile Router
 		this.router = new Router();		
 	});
 } );

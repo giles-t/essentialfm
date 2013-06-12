@@ -2,21 +2,27 @@
 // =============
 
 // Includes file dependencies
-define([ "jquery", "backbone", "auth",
+define([ "jquery", "backbone", "auth", "debug",
+	// View Manager
+	"../framework/viewManager",
 	// Models
 	"../models/CategoryModel", 
 	// Collections
 	"../collections/CategoriesCollection", 
 	// Views
 	"../views/entry/SignInView",
+	"../views/entry/SignUpView",
 	"../views/profile/ProfileView" 
-], function( $, Backbone, Auth,
+], function( $, Backbone, Auth, Debug,
+	// View Manager
+	viewManager,
 	// Models
 	CategoryModel, 
 	// Collections
 	CategoriesCollection, 
 	// Views
 	EntrySignInView,
+	EntrySignUpView,
 	ProfileView
 ) {
 
@@ -25,22 +31,8 @@ define([ "jquery", "backbone", "auth",
 
         // The Router constructor
         initialize: function() {
-			
-			Auth.client;
-/*			this.firebase = new Firebase('https://essential.firebaseio.com');
-			this.authClient = new FirebaseAuthClient(this.firebase, function(error, user) {
-				if (error) {
-					// an error occurred while attempting login
-					console.log(error);
-				} else if (user) {
-					// user authenticated with Firebase
-					console.log('User ID: ' + user.id + ', Provider: ' + user.provider);
-					window.location.hash = 'profile';
-				} else {
-					console.log("No session, directing to login page.")
-					window.location.hash = 'signin';
-				}
-			}); */	
+			Debug.log('Router - Initialize!!!!');
+			//Auth.client;
 			
             // Instantiates a new Animal Category View
             //this.animalsView = new CategoryView( { el: "#animals", collection: new CategoriesCollection( [] , { type: "animals" } ) } );
@@ -50,9 +42,6 @@ define([ "jquery", "backbone", "auth",
 
             // Instantiates a new Vehicles Category View
             //this.vehiclesView = new CategoryView( { el: "#vehicles", collection: new CategoriesCollection( [] , { type: "vehicles" } ) } );
-			
-			// View Manager Array
-			this.viewList = [];
 			
             // Tells Backbone to start watching for hashchange events
             Backbone.history.start();
@@ -67,6 +56,8 @@ define([ "jquery", "backbone", "auth",
 			"signIn": "signIn",
 			
 			"signUp": "signUp",
+			
+			"tour": "tour",
 
 			"stream": "stream",
 
@@ -82,56 +73,46 @@ define([ "jquery", "backbone", "auth",
 
         // Entry Methods
         splash: function() {
-            $.mobile.changePage( "#signUp" , { reverse: false, changeHash: false } );
+            $.mobile.changePage( "#signUpView" , { reverse: false, changeHash: false } );
         },
         signIn: function() {
-			console.log('Router - signIn route!!!!')
+			Debug.log('Router - signIn route!!!!')
 			this.navClear("topNav");
-			this.viewManager('#signIn', EntrySignInView, false, false);
+			viewManager.create('#signInView', EntrySignInView, false, false);
         },
         signUp: function() {
+			Debug.log('Router - signUp route!!!!')
 			this.navClear("topNav");
-            $.mobile.changePage( "#signUp" , { reverse: false, changeHash: false } );
+			viewManager.create('#signUpView', EntrySignUpView, false, false);
+        },
+        tour: function() {
+			this.navClear("topNav");
+            $.mobile.changePage( "#tourView" , { reverse: false, changeHash: false } );
         },
 
         // Main Page Methods
         stream: function() {
 			this.navClear('bottomNav');
-            $.mobile.changePage( "#stream" , { reverse: false, changeHash: false } );
+            $.mobile.changePage( "#streamView" , { reverse: false, changeHash: false } );
         },
         explore: function() {
 			this.navClear('bottomNav');
-            $.mobile.changePage( "#explore" , { reverse: false, changeHash: false } );
-
+            $.mobile.changePage( "#exploreView" , { reverse: false, changeHash: false } );
         },
         add: function() {
 			this.navClear('bottomNav');
-            $.mobile.changePage( "#add" , { reverse: false, changeHash: false } );
-
+            $.mobile.changePage( "#addView" , { reverse: false, changeHash: false } );
         },
         activity: function() {
 			this.navClear('bottomNav');
-            $.mobile.changePage( "#activity" , { reverse: false, changeHash: false } );
-
+            $.mobile.changePage( "#activityView" , { reverse: false, changeHash: false } );
         },
         profile: function() {
 			this.navClear('bottomNav');
-			new ProfileView;
+			viewManager.create('#profileView', ProfileView, false, false);
         },
 
-		// Helper Methods
-		viewManager: function(viewName, view, reverse, changeHash) {
-			// This is the view manager it kills zombie view before they happen.
-			console.log(this.viewList);
-			if ( this.viewList.indexOf(viewName) === -1 ) {
-				console.log('View Manager - view ' + viewName + ' does not exist, creating view!!!!');
-				new view;
-				this.viewList.push(viewName);
-			} else {
-				console.log('View Manager - view ' + viewName + ' already exists, changing page!!!!');
-				$.mobile.changePage( viewName, { reverse: reverse, changeHash: changeHash } );
-			}
-		},
+		// This clears active nav button state
 		navClear: function(nav) {
 			$('.' + nav + '').find('.ui-btn-active').removeClass('ui-btn-active');
 		},
