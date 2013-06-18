@@ -6,3 +6,7 @@
 .bottomNav #profileNav .ui-icon { background:  url(../img/icons/profile.png) 50% 50% no-repeat;  background-size: 24px 21px; }
 .bottomNav #streamNav .ui-icon { background:  url(../img/icons/stream.png) 50% 50% no-repeat;  background-size: 24px 24px; }
 .bottomNav #activityNav .ui-icon { background:  url(../img/icons/activity.png) 50% 50% no-repeat;  background-size: 24px 24px; }
+
+/* Profile View Styles */
+#profileView .stats { text-align: center; }
+#profileView span { display: block; }

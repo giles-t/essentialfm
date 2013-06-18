@@ -5,10 +5,6 @@
 define([ "jquery", "backbone", "auth", "debug",
 	// View Manager
 	"../framework/viewManager",
-	// Models
-	"../models/CategoryModel", 
-	// Collections
-	"../collections/CategoriesCollection", 
 	// Views
 	"../views/entry/SignInView",
 	"../views/entry/SignUpView",
@@ -16,39 +12,23 @@ define([ "jquery", "backbone", "auth", "debug",
 ], function( $, Backbone, Auth, Debug,
 	// View Manager
 	viewManager,
-	// Models
-	CategoryModel, 
-	// Collections
-	CategoriesCollection, 
 	// Views
 	EntrySignInView,
 	EntrySignUpView,
 	ProfileView
 ) {
 
-    // Extends Backbone.Router
     var Router = Backbone.Router.extend( {
 
         // The Router constructor
         initialize: function() {
 			Debug.log('Router - Initialize!!!!');
-			//Auth.client;
 			
-            // Instantiates a new Animal Category View
-            //this.animalsView = new CategoryView( { el: "#animals", collection: new CategoriesCollection( [] , { type: "animals" } ) } );
-
-            // Instantiates a new Colors Category View
-            //this.colorsView = new CategoryView( { el: "#colors", collection: new CategoriesCollection( [] , { type: "colors" } ) } );
-
-            // Instantiates a new Vehicles Category View
-            //this.vehiclesView = new CategoryView( { el: "#vehicles", collection: new CategoriesCollection( [] , { type: "vehicles" } ) } );
-			
-            // Tells Backbone to start watching for hashchange events
+			// Start listening for events
             Backbone.history.start();
-
         },
 
-        // Backbone.js Routes
+        // App Routes
         routes: {
 
             "": "splash",

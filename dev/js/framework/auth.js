@@ -27,6 +27,8 @@ function( Firebase, FirebaseAuthClient, Debug ) {
 			window.location.hash = 'signIn';
 		}
 	});
+	// Set the new user flag to false
+	auth.newUser = false;
 	
     return auth;
 

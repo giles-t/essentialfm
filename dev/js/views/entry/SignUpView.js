@@ -50,6 +50,9 @@ function( Firebase, $, Backbone, Auth, Debug ) {
 						email: email,
 						password: password
 					});
+					Auth.newUser = true;
+					Auth.id = user.id;
+					Auth.email = user.email;
 					window.location.hash = 'profile';
 					$('#signUpView #passwordInput').val('');
 				} else {

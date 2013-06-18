@@ -26,24 +26,23 @@ require.config( {
 				"exports": "Firebase"  //attaches "Firebase" to the window object
 			},
             "backbone": {
-            	"deps": [ "underscore", "jquery" ],
+            	"deps": [ "firebaseauthclient", "underscore", "jquery" ],
                 "exports": "Backbone"  //attaches "Backbone" to the window object
             },
 			"backbonefirebase": {
-				"deps": [ "firebase", "backbone" ],
-				"exports": "BackboneFirebase"  //attaches "BackboneFirebase" to the window object
+				"deps": [ "backbone" ],
 			},
 			"firebaseauthclient": {
-				"deps": [ "firebase", "backbonefirebase" ],
-				"exports": "FirebaseAuthClient"  //attaches "FirebaseAuthClient" to the window object
+				"deps": [ "firebase" ],
+				"exports": "FirebaseAuthClient"
 			},
 			"auth": {
-				"deps": [ "firebase", "firebaseauthclient" ],
-				"exports": "Auth"  //attaches "Auth" to the window object
+				"deps": [ "firebaseauthclient" ],
+				//"exports": "Auth"
 			},
 			"debug": {
 				"deps": [ "firebase", "firebaseauthclient" ],
-				"exports": "Debug"
+				//"exports": "Debug"
 			}
 
       } // end Shim Configuration

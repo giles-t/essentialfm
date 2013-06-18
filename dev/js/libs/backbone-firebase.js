@@ -43,6 +43,8 @@ _.extend(Backbone.Firebase.prototype, {
   },
   _childChanged: function(childSnap, prevChild) {
     var model = childSnap.val();
+    console.log('Firebase - Child Changed!!!!');
+    console.log(model);
     model.id = childSnap.name();
     var item = _.find(this._children, function(child) {
       return child.id == model.id
