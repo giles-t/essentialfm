@@ -8,6 +8,7 @@ define([ "jquery", "backbone", "auth", "debug",
 	// Views
 	"../views/entry/SignInView",
 	"../views/entry/SignUpView",
+	"../views/explore/ExploreView",
 	"../views/profile/ProfileView" 
 ], function( $, Backbone, Auth, Debug,
 	// View Manager
@@ -15,6 +16,7 @@ define([ "jquery", "backbone", "auth", "debug",
 	// Views
 	EntrySignInView,
 	EntrySignUpView,
+	ExploreView,
 	ProfileView
 ) {
 
@@ -77,7 +79,7 @@ define([ "jquery", "backbone", "auth", "debug",
         },
         explore: function() {
 			this.navClear('bottomNav');
-            $.mobile.changePage( "#exploreView" , { reverse: false, changeHash: false } );
+			viewManager.create('#exploreView', ExploreView, false, false);
         },
         add: function() {
 			this.navClear('bottomNav');

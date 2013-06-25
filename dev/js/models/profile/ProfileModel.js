@@ -24,7 +24,6 @@ define([ "firebase", "backbonefirebase", "jquery", "backbone", "auth", "debug" ]
 				videos: 0,
 				photos: 0
 			});
-			console.log(this);
 		}
 
     });

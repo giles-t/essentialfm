@@ -151,13 +151,36 @@
 <!-- Explore -->
 <div id="exploreView" data-role="page" data-title="Explore">
   
-	<div data-role="header">
-	      <h1>Explore</h1>
+	<div class="exploreHeader" data-role="header">
+		<form>
+			<fieldset data-role="controlgroup" data-type="horizontal" data-corners="false" data-mini="true">
+			    <input type="radio" name="radio-choice-h-6" id="radio-choice-h-6a" value="on" checked="checked">
+			    <label for="radio-choice-h-6a" class="exploreArtistsSearchButton">Artist</label>
+			    <input type="radio" name="radio-choice-h-6" id="radio-choice-h-6b" value="off">
+			    <label for="radio-choice-h-6b" class="exploreLocationsSearchButton">Location</label>
+			    <input type="radio" name="radio-choice-h-6" id="radio-choice-h-6c" value="other">
+			    <label for="radio-choice-h-6c" class="exploreVenuesSearchButton">Venue</label>
+			</fieldset>
+		</form>
 	</div><!-- /header -->
-
-	<div data-role="content">
-	      <h2>Select a Category Below:</h2>
-	</div><!-- /content -->
+	<form id="exploreSearchForm" data-ajax="false">
+		<label for="search" class="ui-hidden-accessible">Search:</label>
+		<input type="search" data-ajax="false" name="exploreSearch" id="exploreSearch" value="" placeholder="Search Artists">
+	</form>
+	<div data-role="collapsible-set" data-corners="false" data-theme="c" data-content-theme="d">
+	    <div data-role="collapsible">
+	        <h3>Section 1</h3>
+	        <p>Collapsible content</p>
+	    </div>
+	    <div data-role="collapsible">
+	        <h3>Section 2</h3>
+	        <p>Collapsible content</p>
+	    </div>
+	    <div data-role="collapsible">
+	        <h3>Section 3</h3>
+	        <p>Collapsible content</p>
+	    </div>
+	</div>
 
 	<div data-role="footer" data-id="bottomNav" data-position="fixed">
 		<div data-role="navbar" class="bottomNav">
@@ -275,6 +298,7 @@
 		</div><!-- /navbar -->
 	</div><!-- /footer -->
 </div>
+
 
 <!-- Underscore Template that is used to display all of the Category Models -->
 <script id="categoryItems" type="text/template">

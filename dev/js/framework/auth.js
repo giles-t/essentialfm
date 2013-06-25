@@ -19,7 +19,7 @@ function( Firebase, FirebaseAuthClient, Debug ) {
 			Debug.log('Auth - Client - User ID: ' + user.id + ', Provider: ' + user.provider + '!!!!');
 			auth.id = user.id;
 			auth.email = user.email;
-			window.location.hash = 'profile';
+			window.location.hash = 'stream';
 		} else {
 			Debug.log("Auth - Client - No session, directing to login page!!!!");
 			auth.id = null;

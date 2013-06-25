@@ -43,8 +43,6 @@ _.extend(Backbone.Firebase.prototype, {
   },
   _childChanged: function(childSnap, prevChild) {
     var model = childSnap.val();
-    console.log('Firebase - Child Changed!!!!');
-    console.log(model);
     model.id = childSnap.name();
     var item = _.find(this._children, function(child) {
       return child.id == model.id
@@ -98,7 +96,7 @@ _.extend(Backbone.Firebase.prototype, {
     });
   },
 
-  delete: function(model, cb) {
+  'delete': function(model, cb) {
     this._fbref.ref().child(model.id).remove(function(err) {
       if (!err) {
         cb(null, model);
@@ -182,10 +180,10 @@ Backbone.Firebase.Collection = Backbone.Collection.extend({
     }
 
     // Add handlers for remote events.
-    this.firebase.on("child_added", this._childAdded.bind(this));
-    this.firebase.on("child_moved", this._childMoved.bind(this));
-    this.firebase.on("child_changed", this._childChanged.bind(this));
-    this.firebase.on("child_removed", this._childRemoved.bind(this));
+    this.firebase.on("child_added", _.bind(this._childAdded, this));
+    this.firebase.on("child_moved", _.bind(this._childMoved, this));
+    this.firebase.on("child_changed", _.bind(this._childChanged, this));
+    this.firebase.on("child_removed", _.bind(this._childRemoved, this));
 
     // Add handlers for all models in this collection, and any future ones
     // that may be added.
@@ -268,7 +266,9 @@ Backbone.Firebase.Collection = Backbone.Collection.extend({
   },
 
   _childAdded: function(snap) {
-    Backbone.Collection.prototype.add.apply(this, [snap.val()]);
+    var model = snap.val()
+    if (!model.id) model.id = snap.name()
+    Backbone.Collection.prototype.add.apply(this, [model]);
   },
 
   _childMoved: function(snap) {
@@ -278,6 +278,7 @@ Backbone.Firebase.Collection = Backbone.Collection.extend({
 
   _childChanged: function(snap) {
     var model = snap.val();
+    if (!model.id) model.id = snap.name()
     var item = _.find(this.models, function(child) {
       return child.id == model.id
     });
@@ -285,11 +286,19 @@ Backbone.Firebase.Collection = Backbone.Collection.extend({
       // TODO: Investigate: what is the right way to handle this case?
       throw new Error("Could not find model with ID " + model.id);
     }
+
+    var diff = _.difference(_.keys(item.attributes), _.keys(model));
+    _.each(diff, function(key) {
+      item.unset(key);
+    });
+
     item.set(model);
   },
 
   _childRemoved: function(snap) {
-    Backbone.Collection.prototype.remove.apply(this, [snap.val()]);
+    var model = snap.val()
+    if (!model.id) model.id = snap.name()
+    Backbone.Collection.prototype.remove.apply(this, [model]);
   }
 });
 

@@ -10,3 +10,6 @@
 /* Profile View Styles */
 #profileView .stats { text-align: center; }
 #profileView span { display: block; }
+
+/* Explore View Styles */
+#exploreView .exploreHeader { text-align: center; }

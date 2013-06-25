@@ -12,7 +12,7 @@ require.config( {
             //"underscore": "libs/underscore", // 1.4.4
             "backbone": "libs/backbone", // 1.0.0
             //"backbone": "http://cdnjs.cloudflare.com/ajax/libs/backbone.js/0.9.10/backbone-min",
-			"backbonefirebase": "libs/backbone-firebase", // June 8th, 2013
+			"backbonefirebase": "libs/backbone-firebase", // June 18th, 2013
 			"firebaseauthclient": "https://cdn.firebase.com/v0/firebase-auth-client",
 			"auth": "framework/auth",
 			"debug": "framework/debug"
@@ -24,6 +24,9 @@ require.config( {
 
 			"firebase": {
 				"exports": "Firebase"  //attaches "Firebase" to the window object
+			},
+			"jquerymobile": {
+				"deps": [ "jquery" ]
 			},
             "backbone": {
             	"deps": [ "firebaseauthclient", "underscore", "jquery" ],
@@ -52,7 +55,7 @@ require.config( {
 // Includes File Dependencies
 require([ 
 	"firebase", 
-	"jquery", 
+	"jquery",
 	"backbone", 
 	"backbonefirebase", 
 	"firebaseauthclient", 
@@ -61,7 +64,7 @@ require([
 	"routers/router" 
 ], function( 
 	Firebase, 
-	$, 
+	$,
 	Backbone, 
 	BackboneFirebase, 
 	FirebaseAuthClient, 
