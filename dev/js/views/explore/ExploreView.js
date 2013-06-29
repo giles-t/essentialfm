@@ -47,10 +47,12 @@ function( Firebase, $, Backbone, Auth, Debug,
         	var query = $('#exploreSearch').val().split(' ').join('+');
         	Debug.log('View - Explore View - Search for '+ query +' in '+ this.searchType +' !!!!');
         	this.ExploreCollection.url = 'http://api.seatgeek.com/2/'+ this.searchType + this.searchPrefix + query;
+        	var that = this;
         	this.ExploreCollection.fetch({
 			    success: function(collection, response){
 		            console.log(collection);
 		            console.log(response);
+		            that.updateExploreList();
 				}
 			});
         },
@@ -74,6 +76,14 @@ function( Firebase, $, Backbone, Auth, Debug,
         	$('#exploreSearch').attr('placeholder', 'Search Venues');
         	this.searchPrefix = '?q=';
         	this.searchType = 'venues';
+        },
+
+        updateExploreList: function() {
+        	Debug.log('View - Explore View - Update Explore List!!!!');
+        	// Sets the view's template property
+            this.template = _.template( $( "script#exploreItems" ).html(), { "collection": this.ExploreCollection } );
+            // Renders the view's template inside of the current listview element
+            this.$el.find('.exploreList ul').html(this.template);
         }
 
 	});

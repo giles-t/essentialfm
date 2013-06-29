@@ -23,6 +23,12 @@ function( Firebase, BackboneFirebase, $, Backbone, Auth, Debug,
             Debug.log('Collection - Explore Collection - Init!!!!');
         },
 
+        // The SeatGeek Search API returns tweets under "performers".
+        parse: function(response) {
+            console.log(response.performers);
+            return response.performers;
+        }
+
     });
 
     // Returns the Model class

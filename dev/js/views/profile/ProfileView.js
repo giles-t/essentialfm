@@ -24,7 +24,7 @@ function( Firebase, $, Backbone, Auth, Debug,
 			"click #signOutButton": "signOut"
 		},
 
-	  initialize: function() {
+		initialize: function() {
 			Debug.log('View - Profie View - Init!!!!');
 			// Create the users profile
 			this.ProfileModel = new ProfileModel;
@@ -35,22 +35,22 @@ function( Firebase, $, Backbone, Auth, Debug,
 			this.listenTo(this.ProfileModel, 'change:videos', this.updateVideos);
 			// Render the View
 			this.render();
-	  },
+		},
 
-	  render: function() {
+		render: function() {
 			Debug.log('View - Profile View - Render!!!!');
-	    $.mobile.changePage( "#profileView" , { reverse: false, changeHash: false } );
-	    
-	    // If this is a new user create their profile, else ensure that we have rendered the model data
+			$.mobile.changePage( "#profileView" , { reverse: false, changeHash: false } );
+
+			// If this is a new user create their profile, else ensure that we have rendered the model data
 			if (Auth.newUser) { 
 				Auth.newUser = false; 
 				this.ProfileModel.newUser(); 
 			} else if ( this.ProfileModel.has('followers') ) {
-	    	this.initRender();
-	    } else {
-	    	alert('Something went wrong');
-	    }
-	  },
+				this.initRender();
+			} else {
+				alert('Something went wrong');
+			}
+		},
 
 		signOut: function() {
 			Debug.log('View - Profile View - Signout!!!!');

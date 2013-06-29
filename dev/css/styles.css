@@ -13,3 +13,5 @@
 
 /* Explore View Styles */
 #exploreView .exploreHeader { text-align: center; }
+#exploreView .exploreList > ul { margin: 0; padding: 0; }
+#exploreView .exploreList img { width: 100%; }

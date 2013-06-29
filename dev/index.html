@@ -167,19 +167,8 @@
 		<label for="search" class="ui-hidden-accessible">Search:</label>
 		<input type="search" data-ajax="false" name="exploreSearch" id="exploreSearch" value="" placeholder="Search Artists">
 	</form>
-	<div data-role="collapsible-set" data-corners="false" data-theme="c" data-content-theme="d">
-	    <div data-role="collapsible">
-	        <h3>Section 1</h3>
-	        <p>Collapsible content</p>
-	    </div>
-	    <div data-role="collapsible">
-	        <h3>Section 2</h3>
-	        <p>Collapsible content</p>
-	    </div>
-	    <div data-role="collapsible">
-	        <h3>Section 3</h3>
-	        <p>Collapsible content</p>
-	    </div>
+	<div class="exploreList">
+		<ul></ul>
 	</div>
 
 	<div data-role="footer" data-id="bottomNav" data-position="fixed">
@@ -301,15 +290,13 @@
 
 
 <!-- Underscore Template that is used to display all of the Category Models -->
-<script id="categoryItems" type="text/template">
+<script id="exploreItems" type="text/template">
 
-      <% _.each( collection.toJSON(), function( category, id ) { %>
-
-            <li class="ui-li ui-li-static ui-btn-up-c ui-corner-top">
-                  <%= category.type %>
-            </li>
-
-      <% }); %>
+	<% _.each( collection.toJSON(), function( category, id ) { %>
+	    <li class="ui-li">
+			<img src="<%= category.images.block %>" />
+	    </li>
+	<% }); %>
 
 </script>
 
