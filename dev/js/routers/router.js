@@ -9,7 +9,8 @@ define([ "jquery", "backbone", "auth", "debug",
 	"../views/entry/SignInView",
 	"../views/entry/SignUpView",
 	"../views/explore/ExploreView",
-	"../views/profile/ProfileView" 
+	"../views/profile/ProfileView",
+	"../views/performer/PerformerView" 
 ], function( $, Backbone, Auth, Debug,
 	// View Manager
 	viewManager,
@@ -17,7 +18,8 @@ define([ "jquery", "backbone", "auth", "debug",
 	EntrySignInView,
 	EntrySignUpView,
 	ExploreView,
-	ProfileView
+	ProfileView,
+	PerformerView
 ) {
 
     var Router = Backbone.Router.extend( {
@@ -34,22 +36,15 @@ define([ "jquery", "backbone", "auth", "debug",
         routes: {
 
             "": "splash",
-
 			"signIn": "signIn",
-			
 			"signUp": "signUp",
-			
 			"tour": "tour",
-
 			"stream": "stream",
-
             "explore": "explore",
-
 			"add": "add",
-			
 			"activity": "activity",
-			
 			"profile": "profile",
+			"performer/:performer": "performer"
 
         },
 
@@ -60,12 +55,12 @@ define([ "jquery", "backbone", "auth", "debug",
         signIn: function() {
 			Debug.log('Router - signIn route!!!!')
 			this.navClear("topNav");
-			viewManager.create('#signInView', EntrySignInView, false, false);
+			viewManager.create('#signInView', EntrySignInView, false, false, false);
         },
         signUp: function() {
 			Debug.log('Router - signUp route!!!!')
 			this.navClear("topNav");
-			viewManager.create('#signUpView', EntrySignUpView, false, false);
+			viewManager.create('#signUpView', EntrySignUpView, false, false, false);
         },
         tour: function() {
 			this.navClear("topNav");
@@ -79,7 +74,7 @@ define([ "jquery", "backbone", "auth", "debug",
         },
         explore: function() {
 			this.navClear('bottomNav');
-			viewManager.create('#exploreView', ExploreView, false, false);
+			viewManager.create('#exploreView', ExploreView, true, false, false);
         },
         add: function() {
 			this.navClear('bottomNav');
@@ -91,7 +86,12 @@ define([ "jquery", "backbone", "auth", "debug",
         },
         profile: function() {
 			this.navClear('bottomNav');
-			viewManager.create('#profileView', ProfileView, false, false);
+			viewManager.create('#profileView', ProfileView, false, false, false);
+        },
+
+        // Dynamic Pages
+        performer: function(performer) {
+			viewManager.create('#performerView', PerformerView, true, false, false);
         },
 
 		// This clears active nav button state

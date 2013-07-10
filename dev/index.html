@@ -293,8 +293,18 @@
 <script id="exploreItems" type="text/template">
 
 	<% _.each( collection.toJSON(), function( category, id ) { %>
-	    <li class="ui-li">
-			<img src="<%= category.images.block %>" />
+	    <li exploreItemId="<%= category.id %>" class="ui-li">
+	    	<% if ( category.images.block ) { %>
+	    		<img src="<%= category.images.block %>"></img>
+	    	<% } else { %>
+	    		<img src="default.jpg"></img>
+	    	<% } %>
+	    	<div>
+				<span>
+					<%= category.name %>
+				</span>
+				<div></div>
+			</div>
 	    </li>
 	<% }); %>
 

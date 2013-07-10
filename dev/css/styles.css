@@ -14,4 +14,16 @@
 /* Explore View Styles */
 #exploreView .exploreHeader { text-align: center; }
 #exploreView .exploreList > ul { margin: 0; padding: 0; }
-#exploreView .exploreList img { width: 100%; }
+#exploreView .exploreList > ul > li { position: relative; }
+#exploreView .exploreList > ul > li > img { position: relative; width: 100%; }
+#exploreView .exploreList > ul > li > div { position: absolute; bottom: 4px; }
+#exploreView .exploreList > ul > li > div > span { 
+	position: relative; display: block; 
+	bottom: 8%; padding: 5px;
+	color: #fff; z-index: 1;
+}
+#exploreView .exploreList > ul > li > div > div { 
+	position: absolute; background: #000;
+	height: 100%; width: 100%; top: 0;
+	opacity: 0.5;
+}
